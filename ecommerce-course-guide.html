@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commercify — The Complete Ecommerce Launch Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Brand Accent Colorway */
+    --accent: #95BF47;
+    --accent-dark: #7a9e38;
+    --accent-light: rgba(149, 191, 71, 0.12);
+    --accent-border: rgba(149, 191, 71, 0.35);
+    --accent-glow: rgba(149, 191, 71, 0.25);
+    
+    /* Pearl Theme Color System */
+    --pearl-bg: #FAF8F5;          /* Soft luminous Pearl base */
+    --pearl-surface: #FFFFFF;     /* Pure pearl card surface */
+    --pearl-alt: #F2F0E8;         /* Slightly deeper pearl background */
+    --pearl-card: #FAF9F6;        /* Elevated pearl card */
+    --pearl-border: rgba(26, 33, 24, 0.08); /* Clean subtle border */
+    --pearl-border-hover: rgba(149, 191, 71, 0.4);
+    
+    /* Dark Modern Accent System (for contrast sections) */
+    --dark-bg: #141A12;           /* Deep rich forest charcoal */
+    --dark-surface: #1C2419;      /* Deep pearl dark surface */
+    --dark-border: rgba(149, 191, 71, 0.22);
+    
+    /* Typography / Ink System */
+    --ink-primary: #161D14;       /* Deep obsidian charcoal */
+    --ink-secondary: #455042;     /* Muted sage charcoal */
+    --ink-muted: #707C6E;         /* Soft olive gray */
+    --ink-light: #F4F6F1;         /* Light ink for dark sections */
+    --ink-light-muted: #ADBAA8;
+    
+    /* Elevation & Shadows */
+    --shadow-sm: 0 4px 12px rgba(22, 29, 20, 0.03);
+    --shadow-md: 0 12px 32px -8px rgba(22, 29, 20, 0.06);
+    --shadow-lg: 0 20px 48px -12px rgba(22, 29, 20, 0.1);
+    --shadow-accent: 0 10px 28px -6px rgba(149, 191, 71, 0.35);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  
+  body {
+    margin: 0;
+    font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--ink-primary);
+    background-color: var(--pearl-bg);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    margin: 0;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    font-weight: 800;
+  }
+
+  p { margin: 0; }
+  a { color: inherit; text-decoration: none; }
+  ul { margin: 0; padding: 0; list-style: none; }
+
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+
+  /* ---------- Modern Buttons ---------- */
+  .btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.96rem;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    background-color: var(--accent);
+    color: #12180E;
+    box-shadow: var(--shadow-accent);
+  }
+  .btn-primary:hover {
+    background-color: var(--accent-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 32px -4px rgba(149, 191, 71, 0.45);
+  }
+
+  .btn-ghost {
+    color: var(--ink-primary);
+    background: var(--pearl-surface);
+    border: 1px solid var(--pearl-border);
+    box-shadow: var(--shadow-sm);
+  }
+  .btn-ghost:hover {
+    background: #FFFFFF;
+    border-color: var(--accent-border);
+    transform: translateY(-2px);
+    color: #12180E;
+    box-shadow: var(--shadow-md);
+  }
+
+  .btn-dark {
+    background: var(--accent);
+    color: #12180E;
+    font-weight: 700;
+  }
+  .btn-dark:hover {
+    background: #a4d44e;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(149, 191, 71, 0.4);
+  }
+
+  /* ---------- Header / Nav ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 16px 0;
+  }
+
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 28px 10px 18px;
+    background: rgba(250, 248, 245, 0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--pearl-border);
+    border-radius: 20px;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 2px 0;
+    margin-right: 36px;
+  }
+
+  .brand-logo {
+    height: 48px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .brand-logo:hover {
+    transform: scale(1.04);
+  }
+
+  nav ul { display: flex; gap: 24px; }
+  nav a {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--ink-secondary);
+    transition: color 0.2s ease;
+  }
+  nav a:hover { color: var(--ink-primary); }
+  .nav-links { display: flex; align-items: center; gap: 28px; }
+
+  /* ---------- Modern Eyebrows & Badges ---------- */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 0.78rem;
+    color: #425819;
+    background: var(--accent-light);
+    border: 1px solid var(--accent-border);
+    padding: 6px 14px;
+    border-radius: 100px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: var(--ink-primary);
+    background: var(--pearl-surface);
+    border: 1px solid var(--pearl-border);
+    box-shadow: var(--shadow-sm);
+    padding: 8px 18px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+  }
+  .kicker-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+    animation: pulseDot 2s infinite ease-in-out;
+  }
+  @keyframes pulseDot {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.3); opacity: 0.6; }
+  }
+
+  /* ---------- Sections ---------- */
+  section { position: relative; padding: 100px 0; }
+  .section-alt { background-color: var(--pearl-alt); }
+  .section-dark {
+    background-color: var(--dark-bg);
+    color: var(--ink-light);
+  }
+
+  .section-head { max-width: 640px; margin-bottom: 56px; }
+  .section-head h2 { font-size: clamp(2.0rem, 3.5vw, 2.6rem); color: var(--ink-primary); }
+  .section-dark .section-head h2 { color: #FFFFFF; }
+  .section-head p { margin-top: 16px; font-size: 1.08rem; line-height: 1.65; color: var(--ink-secondary); }
+  .section-dark .section-head p { color: var(--ink-light-muted); }
+
+  /* ---------- Hero Section ---------- */
+  .hero { padding: 80px 0 60px; overflow: hidden; }
+  .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; }
+  
+  .hero h1 {
+    font-size: clamp(2.6rem, 5vw, 3.8rem);
+    color: var(--ink-primary);
+    letter-spacing: -0.035em;
+  }
+  .hero h1 span {
+    color: #486318;
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(135deg, #7a9e38 0%, #4a661b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .hero p.lead {
+    margin-top: 22px;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--ink-secondary);
+    max-width: 52ch;
+  }
+
+  .hero-actions { margin-top: 36px; display: flex; gap: 16px; flex-wrap: wrap; }
+  
+  .hero-stats {
+    display: flex;
+    gap: 36px;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--pearl-border);
+  }
+  .hero-stats div strong {
+    display: block;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--ink-primary);
+  }
+  .hero-stats div span { font-size: 0.88rem; font-weight: 500; color: var(--ink-muted); }
+
+  /* Modern Tech Hero Graphic */
+  .hero-art {
+    position: relative;
+    height: 440px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .hero-glow {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(149, 191, 71, 0.28) 0%, rgba(149, 191, 71, 0) 70%);
+    filter: blur(40px);
+    z-index: 0;
+    animation: pulseGlow 6s infinite ease-in-out;
+  }
+  @keyframes pulseGlow {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.15); }
+  }
+
+  .hero-card-stack {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    z-index: 1;
+  }
+
+  .dashboard-mockup {
+    background: var(--pearl-surface);
+    border: 1px solid var(--pearl-border);
+    border-radius: 24px;
+    padding: 28px;
+    box-shadow: var(--shadow-lg);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .dashboard-mockup:hover { transform: translateY(-6px); }
+
+  .dash-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .dash-badge {
+    background: var(--accent-light);
+    color: #425819;
+    border: 1px solid var(--accent-border);
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+
+  .dash-stat-main {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--ink-primary);
+    margin-bottom: 4px;
+  }
+  .dash-stat-sub { font-size: 0.85rem; color: #425819; font-weight: 600; }
+
+  .dash-chart {
+    height: 90px;
+    margin: 20px 0 10px;
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+  }
+  .chart-bar {
+    flex: 1;
+    background: var(--pearl-alt);
+    border-radius: 6px;
+    transition: height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .chart-bar.active { background: var(--accent); }
+
+  .floating-badge {
+    position: absolute;
+    background: var(--pearl-surface);
+    border: 1px solid var(--pearl-border);
+    padding: 12px 18px;
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    z-index: 2;
+    animation: floatModern 5s infinite ease-in-out;
+  }
+  .fb-1 { top: -20px; right: -20px; animation-delay: 0s; }
+  .fb-2 { bottom: -20px; left: -20px; animation-delay: 2.5s; }
+
+  @keyframes floatModern {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .icon-circle {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background: var(--accent-light);
+    color: #3b5015;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+  }
+
+  /* ---------- Modern Pearl Cards ---------- */
+  .card, .glass {
+    background: var(--pearl-surface);
+    border: 1px solid var(--pearl-border);
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+  }
+
+  .card:hover, .glass:hover {
+    transform: translateY(-4px);
+    border-color: var(--pearl-border-hover);
+    box-shadow: var(--shadow-md), 0 0 20px rgba(149, 191, 71, 0.12);
+  }
+
+  .section-dark .card, .section-dark .glass {
+    background: var(--dark-surface);
+    border-color: var(--dark-border);
+    color: var(--ink-light);
+    box-shadow: none;
+  }
+  .section-dark .card:hover, .section-dark .glass:hover {
+    border-color: var(--accent);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4), 0 0 24px rgba(149, 191, 71, 0.15);
+  }
+
+  /* ---------- Steps & Timeline ---------- */
+  .step {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 32px;
+    padding: 36px 40px;
+    margin-bottom: 24px;
+  }
+  
+  .step-num .orb {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: #12180E;
+    background: var(--accent);
+    box-shadow: var(--shadow-accent);
+  }
+
+  .step h3 { font-size: 1.4rem; color: var(--ink-primary); margin-bottom: 12px; }
+  .step .step-body p { color: var(--ink-secondary); line-height: 1.7; margin-bottom: 14px; font-size: 1.02rem; }
+  .step .step-body p:last-child { margin-bottom: 0; }
+
+  /* ---------- Pills & Tags ---------- */
+  .tool-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+  .pill {
+    font-size: 0.86rem;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 100px;
+    background: var(--pearl-alt);
+    border: 1px solid var(--pearl-border);
+    color: var(--ink-primary);
+  }
+  .pill.g { background: var(--accent-light); border-color: var(--accent-border); color: #3b5015; }
+  .section-dark .pill { background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.12); color: var(--ink-light); }
+
+  .tag {
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: #425819;
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+    display: inline-block;
+    text-transform: uppercase;
+  }
+
+  .callout {
+    margin-top: 20px;
+    padding: 18px 24px;
+    border-radius: 14px;
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent);
+    font-size: 0.98rem;
+    color: #2b3b10;
+    font-weight: 500;
+    line-height: 1.6;
+  }
+
+  /* ---------- Grids ---------- */
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .grid2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  
+  .card h4 { font-size: 1.2rem; color: var(--ink-primary); margin-bottom: 12px; }
+  .section-dark .card h4 { color: #FFFFFF; }
+  .card p { font-size: 0.98rem; line-height: 1.65; color: var(--ink-secondary); }
+  .section-dark .card p { color: var(--ink-light-muted); }
+
+  /* ---------- Tables ---------- */
+  .table-wrap { overflow-x: auto; padding: 0; }
+  table { width: 100%; border-collapse: collapse; min-width: 640px; }
+  th, td { text-align: left; padding: 18px 24px; font-size: 0.96rem; }
+  thead th {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    color: var(--ink-primary);
+    border-bottom: 2px solid var(--pearl-border);
+    background: var(--pearl-alt);
+  }
+  tbody tr:not(:last-child) td { border-bottom: 1px solid var(--pearl-border); }
+  tbody td { color: var(--ink-secondary); }
+  tbody td:first-child { font-weight: 700; color: var(--ink-primary); }
+
+  /* ---------- Toolkit ---------- */
+  .toolkit-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .tool-card { padding: 26px; }
+  .tool-card h5 { font-size: 1.1rem; color: var(--ink-primary); margin-bottom: 14px; }
+  .tool-card ul li {
+    font-size: 0.92rem;
+    padding: 8px 0;
+    color: var(--ink-secondary);
+    border-bottom: 1px solid var(--pearl-border);
+  }
+  .tool-card ul li:last-child { border-bottom: none; }
+  .tool-card ul li b { color: var(--ink-primary); }
+
+  /* ---------- Math Box ---------- */
+  .math-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: center; }
+  .math-box { padding: 36px; }
+  .math-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--pearl-border);
+    font-size: 1.02rem;
+  }
+  .math-row:last-child {
+    border-bottom: none;
+    font-weight: 800;
+    color: var(--accent);
+    font-size: 1.25rem;
+    padding-top: 18px;
+  }
+  .math-row span:first-child { color: var(--ink-secondary); }
+
+  /* ---------- Mistakes ---------- */
+  .mistake {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding: 22px 28px;
+    margin-bottom: 16px;
+  }
+  .mistake .x {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.1rem;
+  }
+  .mistake b { color: var(--ink-primary); }
+
+  /* ---------- Final CTA ---------- */
+  .final-cta { text-align: center; padding: 70px 48px; }
+  .final-cta h2 { color: #FFFFFF; font-size: clamp(2.0rem, 3.6vw, 2.8rem); }
+  .final-cta p { color: var(--ink-light-muted); margin-top: 18px; font-size: 1.1rem; max-width: 56ch; margin-left: auto; margin-right: auto; }
+  .final-actions { margin-top: 36px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  footer {
+    padding: 48px 0;
+    text-align: center;
+    color: var(--ink-muted);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--pearl-border);
+  }
+
+  /* ---------- Scroll Animations ---------- */
+  .animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .delay-1 { transition-delay: 0.1s; }
+  .delay-2 { transition-delay: 0.2s; }
+  .delay-3 { transition-delay: 0.3s; }
+
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-art { height: 360px; }
+    .grid3 { grid-template-columns: 1fr 1fr; }
+    .toolkit-grid { grid-template-columns: 1fr 1fr; }
+    .math-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+  @media (max-width: 600px) {
+    .wrap { padding: 0 20px; }
+    .step { grid-template-columns: 1fr; padding: 28px 24px; gap: 16px; }
+    .grid3 { grid-template-columns: 1fr; }
+    .grid2 { grid-template-columns: 1fr; }
+    .toolkit-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="navbar">
+      <a href="index.html" class="brand"><img src="images/logo.png" alt="Commercify" class="brand-logo"></a>
+      <div class="nav-links">
+        <nav><ul>
+          <li><a href="#niche">Niche</a></li>
+          <li><a href="#platform">Platform</a></li>
+          <li><a href="#sourcing">Sourcing</a></li>
+          <li><a href="#build">Build</a></li>
+          <li><a href="#ads">Advertise</a></li>
+          <li><a href="#scale">Scale</a></li>
+          <li><a href="#toolkit">Toolkit</a></li>
+        </ul></nav>
+        <a href="#niche" class="btn btn-primary" style="padding:10px 22px; font-size:0.9rem;">Start the guide</a>
+        <a href="videos.html" class="btn btn-ghost" style="padding:10px 22px; font-size:0.9rem;">🎥 Best videos</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="animate">
+      <div class="kicker"><span class="kicker-dot"></span> A complete, start-to-profit walkthrough</div>
+      <h1>Build an online store that people actually <span>buy from.</span></h1>
+      <p class="lead">This is the full path from a blank page to a store making sales: how to pick a niche worth building on, which platform and suppliers to use, how to build a store that converts, and exactly where to spend your first ad dollars.</p>
+      <div class="hero-actions">
+        <a href="#niche" class="btn btn-primary">Start with Step 1 →</a>
+        <a href="#toolkit" class="btn btn-ghost">Jump to the toolkit</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>6</strong><span>stages, start to scale</span></div>
+        <div><strong>30+</strong><span>tools &amp; platforms compared</span></div>
+        <div><strong>0</strong><span>fluff — just the steps</span></div>
+      </div>
+    </div>
+    <div class="hero-art animate delay-1">
+      <div class="hero-glow"></div>
+      <div class="hero-card-stack">
+        <!-- Floating Badge 1 -->
+        <div class="floating-badge fb-1">
+          <div class="icon-circle">🚀</div>
+          <div>
+            <div style="font-size:0.75rem; color:var(--ink-muted); font-weight:600;">STATUS</div>
+            <div style="color:var(--ink-primary);">Store Live &amp; Sales Active</div>
+          </div>
+        </div>
+
+        <!-- Main Dashboard Card -->
+        <div class="dashboard-mockup">
+          <div class="dash-header">
+            <img src="images/logo.png" alt="Commercify" style="height:28px; mix-blend-mode:multiply;">
+            <span class="dash-badge">+142% Revenue</span>
+          </div>
+          <div class="dash-stat-main">$14,890.00</div>
+          <div class="dash-stat-sub">↑ 342 orders this month</div>
+          <div class="dash-chart">
+            <div class="chart-bar" style="height:35%;"></div>
+            <div class="chart-bar" style="height:50%;"></div>
+            <div class="chart-bar" style="height:40%;"></div>
+            <div class="chart-bar" style="height:65%;"></div>
+            <div class="chart-bar" style="height:55%;"></div>
+            <div class="chart-bar active" style="height:90%;"></div>
+            <div class="chart-bar active" style="height:100%;"></div>
+          </div>
+        </div>
+
+        <!-- Floating Badge 2 -->
+        <div class="floating-badge fb-2">
+          <div class="icon-circle">⚡</div>
+          <div>
+            <div style="font-size:0.75rem; color:var(--ink-muted); font-weight:600;">CONVERSION RATE</div>
+            <div style="color:var(--ink-primary);">3.8% (Top 10% Tier)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NICHE ================= -->
+<section class="section-alt" id="niche">
+  <div class="wrap">
+    <div class="section-head animate">
+      <span class="eyebrow">STAGE 1 OF 6</span>
+      <h2>Find a niche worth building a store around</h2>
+      <p>The single biggest reason stores fail isn't ads or design — it's picking a product nobody was actively looking for. Validate demand before you build anything.</p>
+    </div>
+
+    <div class="step glass animate">
+      <div class="step-num"><div class="orb">1</div></div>
+      <div class="step-body">
+        <h3>Start from a problem, not a product</h3>
+        <p>Products that sell solve a specific, recurring annoyance — they make something easier, faster, cheaper, or more comfortable. Instead of asking "what's trending," ask "what do people complain about, work around, or buy repeatedly?" Good sources: Reddit and Facebook group complaints in a hobby you know, Amazon reviews on adjacent products (read the 3-star reviews — that's where the unmet need lives), and returning-customer categories like pet care, home organization, and personal wellness.</p>
+        <p>Favor niches with a <b>reason to exist beyond price</b> — a story, a use-case, or a specific audience (e.g. "desk setups for small apartments" beats generic "home office supplies").</p>
+      </div>
+    </div>
+
+    <div class="step glass animate">
+      <div class="step-num"><div class="orb">2</div></div>
+      <div class="step-body">
+        <h3>Check that the demand is real</h3>
+        <p>Before committing, size the market with free and low-cost tools:</p>
+        <div class="tool-row">
+          <span class="pill">Google Trends — is interest flat, rising, or seasonal?</span>
+          <span class="pill">Google Keyword Planner — monthly search volume</span>
+          <span class="pill">Amazon Best Sellers &amp; Movers &amp; Shakers</span>
+          <span class="pill">TikTok &amp; Instagram hashtag view counts</span>
+          <span class="pill">EcomHunt / Minea — trending product feeds</span>
+        </div>
+        <div class="callout">Rule of thumb: you want steady or rising interest, not a single viral spike. A spike means you're already late; a steady climb means there's room to build a brand around it.</div>
+      </div>
+    </div>
+
+    <div class="step glass animate">
+      <div class="step-num"><div class="orb">3</div></div>
+      <div class="step-body">
+        <h3>Do the margin math before you fall in love with it</h3>
+        <p>A niche only works if the numbers work. As a starting filter: your product should sell for at least <b>3–4× your landed cost</b> (product + shipping + packaging), so there's room left for ads, platform fees, and returns after you pay for the item itself.</p>
+        <p>Avoid: fragile items (high return/breakage rates), anything trademarked or brand-restricted, anything requiring certification (electronics, cosmetics, kids' products) unless you're prepared for the compliance work, and pure commodity items you can't differentiate from a marketplace listing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PLATFORM ================= -->
+<section id="platform">
+  <div class="wrap">
+    <div class="section-head animate">
+      <span class="eyebrow">STAGE 2 OF 6</span>
+      <h2>Choose the platform your store lives on</h2>
+      <p>There's no single "best" platform — only the best fit for your technical comfort, budget, and how much control you want.</p>
+    </div>
+
+    <div class="glass table-wrap animate">
+      <table>
+        <thead>
+          <tr><th>Platform</th><th>Best for</th><th>Monthly cost</th><th>Trade-off</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Shopify</td><td>Beginners who want the fastest path to a working store</td><td>~$25–$65+</td><td>Easiest setup and huge app ecosystem, but app costs add up</td></tr>
+          <tr><td>WooCommerce</td><td>People comfortable with WordPress who want full control</td><td>Hosting only, ~$10–$30</td><td>Cheaper long-term, more setup and maintenance work</td></tr>
+          <tr><td>BigCommerce</td><td>Stores that want built-in features without stacking apps</td><td>~$29–$79+</td><td>Fewer themes than Shopify, steeper learning curve</td></tr>
+          <tr><td>Etsy</td><td>Handmade, vintage, or craft-style products</td><td>Listing + sale fees only</td><td>Built-in traffic, but you don't own the customer relationship</td></tr>
+          <tr><td>TikTok Shop / Amazon</td><td>Riding existing marketplace traffic</td><td>Referral fees per sale</td><td>Fast distribution, but you're competing on price inside their walls</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout animate" style="margin-top:24px;">If this is your first store: start on <b>Shopify</b>. The goal early on is testing whether the niche and offer work — not fighting your website builder. You can always migrate or add a marketplace channel once you have traction.</div>
+  </div>
+</section>
+
+<!-- ================= SOURCING ================= -->
+<section class="section-alt" id="sourcing">
+  <div class="wrap">
+    <div class="section-head animate">
+      <span class="eyebrow">STAGE 3 OF 6</span>
+      <h2>Source products you can actually stand behind</h2>
+      <p>How you source shapes your margins, your shipping times, and how much you can differentiate from every other store selling the same thing.</p>
+    </div>
+
+    <div class="grid3">
+      <div class="glass card animate">
+        <span class="tag">FASTEST TO START</span>
+        <h4>Dropshipping</h4>
+        <p>You list products a supplier ships directly to customers. Low upfront cost, but thinner margins and less quality control.</p>
+        <div class="tool-row"><span class="pill g">CJdropshipping</span><span class="pill g">Zendrop</span><span class="pill g">Spocket (US/EU)</span></div>
+      </div>
+      <div class="glass card animate delay-1">
+        <span class="tag">CUSTOM &amp; BRANDED</span>
+        <h4>Print-on-demand</h4>
+        <p>Your own designs printed on blanks (apparel, mugs, posters) only when a customer orders. Great for creators and niche audiences.</p>
+        <div class="tool-row"><span class="pill g">Printful</span><span class="pill g">Printify</span></div>
+      </div>
+      <div class="glass card animate delay-2">
+        <span class="tag">BEST MARGINS AT SCALE</span>
+        <h4>Private label / wholesale</h4>
+        <p>Buy in bulk from a manufacturer, often under your own branding. Higher upfront cost and MOQs, but the strongest margins and most control.</p>
+        <div class="tool-row"><span class="pill g">Alibaba</span><span class="pill g">Local manufacturers</span><span class="pill g">Trade shows</span></div>
+      </div>
+    </div>
+
+    <div class="glass animate" style="margin-top:26px;">
+      <h3 style="font-size:1.25rem; margin-bottom:14px;">Before you commit to any supplier</h3>
+      <div class="tool-row">
+        <span class="pill">Order a sample yourself — check quality and real shipping time</span>
+        <span class="pill">Ask for their defect/return rate</span>
+        <span class="pill">Get landed cost in writing (product + freight + duties)</span>
+        <span class="pill">Confirm packaging can carry your branding</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BUILD ================= -->
+<section id="build">
+  <div class="wrap">
+    <div class="section-head animate">
+      <span class="eyebrow">STAGE 4 OF 6</span>
+      <h2>Build a store that converts, not just one that exists</h2>
+      <p>A store's job is to remove doubt. Every element on the page should make a visitor more confident about buying, not just look nice.</p>
+    </div>
+
+    <div class="grid2">
+      <div class="glass card animate">
+        <h4>The non-negotiable pages</h4>
+        <p>Home, a product page with real photos and a clear return policy, an About page that explains who's behind the store, a visible shipping/returns page, and a contact method that isn't just a form. Stores that skip these lose sales to doubt, not to competitors.</p>
+      </div>
+      <div class="glass card animate delay-1">
+        <h4>Speed beats decoration</h4>
+        <p>Every extra app and oversized image slows your store down, and slow stores lose mobile buyers before the page even finishes loading. Pick a lightweight theme, compress images, and only install apps that earn their keep.</p>
+      </div>
+      <div class="glass card animate">
+        <h4>Trust signals, placed deliberately</h4>
+        <p>Real customer photos and reviews near the buy button, a clearly stated return window, secure-checkout badges, and honest shipping-time estimates all reduce the "is this legit?" hesitation that kills first-time orders.</p>
+      </div>
+      <div class="glass card animate delay-1">
+        <h4>One clear next step per page</h4>
+        <p>Don't compete your own "Add to cart" button against five other calls to action. Every page should point toward one obvious next step.</p>
+      </div>
+    </div>
+
+    <h3 class="animate" style="margin-top:44px; margin-bottom:20px; color:var(--ink-primary); font-size:1.3rem;">Tools worth installing</h3>
+    <div class="tool-row animate">
+      <span class="pill">Judge.me / Loox — reviews with photos</span>
+      <span class="pill">Klaviyo / Privy — email capture &amp; popups</span>
+      <span class="pill">PageFly / GemPages — landing page builder</span>
+      <span class="pill">TinyIMG — image compression &amp; SEO</span>
+      <span class="pill">Gorgias — shared customer inbox</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ADS ================= -->
+<section class="section-dark" id="ads">
+  <div class="wrap">
+    <div class="section-head animate">
+      <span class="eyebrow" style="background:rgba(149, 191, 71, 0.15); color:var(--accent); border-color:rgba(149, 191, 71, 0.3);">STAGE 5 OF 6</span>
+      <h2>Get your first customers</h2>
+      <p>Every channel below plays a different role. Beginners usually get the best return picking one paid channel plus one organic channel, rather than spreading thin across all of them.</p>
+    </div>
+
+    <div class="grid3">
+      <div class="glass card animate">
+        <span class="tag" style="color:var(--accent);">BEST FOR TESTING A NEW PRODUCT</span>
+        <h4>Meta Ads (Facebook &amp; Instagram)</h4>
+        <p>Deep targeting and a mature ad system make this the default starting point for cold traffic. Success depends heavily on the creative — plan to test several ad angles, not just one.</p>
+      </div>
+      <div class="glass card animate delay-1">
+        <span class="tag" style="color:var(--accent);">BEST FOR VISUAL, TREND-LED PRODUCTS</span>
+        <h4>TikTok Ads &amp; Spark Ads</h4>
+        <p>Rewards native, unpolished-feeling video over traditional ad production. Works especially well for products that demonstrate well in 15–30 seconds.</p>
+      </div>
+      <div class="glass card animate delay-2">
+        <span class="tag" style="color:var(--accent);">BEST FOR CAPTURING INTENT</span>
+        <h4>Google Search &amp; Shopping Ads</h4>
+        <p>Catches people already searching for what you sell. Lower volume than social early on, but often the highest intent-to-purchase per click.</p>
+      </div>
+      <div class="glass card animate">
+        <span class="tag" style="color:var(--accent);">SLOWER, BUT FREE</span>
+        <h4>Organic content (TikTok, Reels, Pinterest)</h4>
+        <p>Consistent posting builds a following that reduces your dependence on ad spend over time. Treat it as a compounding asset, not a quick win.</p>
+      </div>
+      <div class="glass card animate delay-1">
+        <span class="tag" style="color:var(--accent);">CHEAPEST SALES YOU'EVER MAKE</span>
+        <h4>Email &amp; SMS (Klaviyo, Postscript)</h4>
+        <p>Abandoned-cart flows and welcome series recover revenue you already paid to earn. Set these up before you scale ad spend — they pay for themselves.</p>
+      </div>
+      <div class="glass card animate delay-2">
+        <span class="tag" style="color:var(--accent);">TRUST BY PROXY</span>
+        <h4>Micro-influencer &amp; UGC seeding</h4>
+        <p>Sending free product to a handful of small, relevant creators often produces better cost-per-sale than a single big-name partnership, and gives you authentic footage to reuse in ads.</p>
+      </div>
+    </div>
+
+    <div class="glass animate" style="margin-top:30px; padding:30px 34px;">
+      <h3 style="font-size:1.2rem; margin-bottom:14px; color:#fff;">A simple starting budget split</h3>
+      <div class="tool-row">
+        <span class="pill">60% → Meta or TikTok ads (find what converts)</span>
+        <span class="pill">20% → Email/SMS tools &amp; flows</span>
+        <span class="pill">20% → Product seeding to micro-creators</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MONEY MATH ================= -->
+<section class="section-alt">
+  <div class="wrap">
+    <div class="section-head animate">
+      <span class="eyebrow">HOW THE MONEY ACTUALLY WORKS</span>
+      <h2>A simple, honest profit example</h2>
+      <p>This is illustrative, not a promise — real numbers vary by niche and ad performance. But this is the math you should be running on your own product before scaling.</p>
+    </div>
+    <div class="math-grid">
+      <div class="glass math-box animate">
+        <div class="math-row"><span>Sale price</span><span>$39.00</span></div>
+        <div class="math-row"><span>Product + shipping (landed cost)</span><span>-$9.50</span></div>
+        <div class="math-row"><span>Platform &amp; payment fees (~4%)</span><span>-$1.56</span></div>
+        <div class="math-row"><span>Ad cost to acquire this sale</span><span>-$14.00</span></div>
+        <div class="math-row"><span>Net profit per order</span><span>$13.94</span></div>
+      </div>
+      <div class="animate delay-1">
+        <h3 style="color:var(--ink-primary); font-size:1.3rem; margin-bottom:16px;">Why this matters before you scale</h3>
+        <p style="color:var(--ink-secondary); line-height:1.7; font-size:1.05rem;">If your ad cost per sale creeps above what's left after product and fees, you're paying to lose money — no amount of "just get more traffic" fixes that. Track this number weekly. The stores that survive are the ones that fix a broken margin before scaling spend, not after.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SCALE ================= -->
+<section id="scale">
+  <div class="wrap">
+    <div class="section-head animate">
+      <span class="eyebrow">STAGE 6 OF 6</span>
+      <h2>Operate smoothly, then scale</h2>
+      <p>Once orders are steady, the job shifts from "get any sale" to "get sales efficiently and keep customers coming back."</p>
+    </div>
+    <div class="grid2">
+      <div class="glass card animate">
+        <h4>Fulfillment</h4>
+        <p>Self-fulfilling gives you control and higher margins early on. Once volume is consistent, a 3PL (third-party logistics warehouse) frees your time and often gets faster shipping rates than you can alone.</p>
+      </div>
+      <div class="glass card animate delay-1">
+        <h4>Customer service</h4>
+        <p>Route every channel — email, DMs, chat — into one shared inbox (Gorgias, Zendesk) so nothing gets missed. Fast responses to shipping questions prevent most chargebacks before they happen.</p>
+      </div>
+      <div class="glass card animate">
+        <h4>Know your numbers</h4>
+        <p>Track customer acquisition cost (CAC), average order value (AOV), and customer lifetime value (LTV) — not just revenue. A store growing revenue while LTV shrinks is quietly getting weaker.</p>
+      </div>
+      <div class="glass card animate delay-1">
+        <h4>Reinvest with intent</h4>
+        <p>Put early profit into: a second and third best-selling product, better creative testing, and retention (email flows, loyalty perks) — in that order. New customers get expensive; existing customers are your cheapest growth.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MISTAKES ================= -->
+<section class="section-alt">
+  <div class="wrap">
+    <div class="section-head animate">
+      <span class="eyebrow">SKIP THESE</span>
+      <h2>The mistakes that quietly sink new stores</h2>
+    </div>
+    <div class="mistake glass animate"><div class="x">✕</div><div><b>Launching with an untested niche.</b> No amount of good design or ad budget fixes a product nobody wanted in the first place.</div></div>
+    <div class="mistake glass animate delay-1"><div class="x">✕</div><div><b>Chasing every trending product.</b> Constant pivoting means you never build the brand recognition or reviews that make later sales easier.</div></div>
+    <div class="mistake glass animate delay-2"><div class="x">✕</div><div><b>Skipping the margin math.</b> A cheap-looking product with thin margins can't survive ad costs or a return.</div></div>
+    <div class="mistake glass animate"><div class="x">✕</div><div><b>Scaling ad spend before the store converts.</b> More traffic to a leaky page just means losing money faster.</div></div>
+    <div class="mistake glass animate delay-1"><div class="x">✕</div><div><b>Ignoring email/SMS.</b> These are the highest-margin sales you'll ever make, and most beginners never turn them on.</div></div>
+  </div>
+</section>
+
+<!-- ================= TOOLKIT ================= -->
+<section id="toolkit">
+  <div class="wrap">
+    <div class="section-head animate">
+      <span class="eyebrow">THE FULL TOOLKIT</span>
+      <h2>Every tool, organized by job</h2>
+      <p>A quick-reference sheet — bookmark this section.</p>
+    </div>
+    <div class="toolkit-grid">
+      <div class="glass tool-card animate">
+        <h5>Platforms</h5>
+        <ul>
+          <li><b>Shopify</b> — easiest overall</li>
+          <li><b>WooCommerce</b> — most control</li>
+          <li><b>BigCommerce</b> — built-in features</li>
+          <li><b>Etsy</b> — handmade/craft</li>
+        </ul>
+      </div>
+      <div class="glass tool-card animate delay-1">
+        <h5>Sourcing</h5>
+        <ul>
+          <li><b>CJdropshipping</b> — dropship</li>
+          <li><b>Zendrop</b> — dropship, US warehouses</li>
+          <li><b>Printful/Printify</b> — print-on-demand</li>
+          <li><b>Alibaba</b> — bulk/private label</li>
+        </ul>
+      </div>
+      <div class="glass tool-card animate delay-2">
+        <h5>Store &amp; design</h5>
+        <ul>
+          <li><b>PageFly/GemPages</b> — page builder</li>
+          <li><b>Judge.me/Loox</b> — reviews</li>
+          <li><b>TinyIMG</b> — speed &amp; SEO</li>
+          <li><b>Canva</b> — quick graphics</li>
+        </ul>
+      </div>
+      <div class="glass tool-card animate delay-3">
+        <h5>Marketing</h5>
+        <ul>
+          <li><b>Meta Ads Manager</b> — Facebook/Instagram</li>
+          <li><b>TikTok Ads Manager</b> — video ads</li>
+          <li><b>Google Ads</b> — search &amp; shopping</li>
+          <li><b>Klaviyo/Postscript</b> — email &amp; SMS</li>
+        </ul>
+      </div>
+      <div class="glass tool-card animate">
+        <h5>Research</h5>
+        <ul>
+          <li><b>Google Trends</b> — demand direction</li>
+          <li><b>EcomHunt/Minea</b> — trending products</li>
+          <li><b>Keyword Planner</b> — search volume</li>
+        </ul>
+      </div>
+      <div class="glass tool-card animate delay-1">
+        <h5>Support</h5>
+        <ul>
+          <li><b>Gorgias</b> — ecommerce helpdesk</li>
+          <li><b>Zendesk</b> — general helpdesk</li>
+          <li><b>Tidio</b> — live chat</li>
+        </ul>
+      </div>
+      <div class="glass tool-card animate delay-2">
+        <h5>Analytics</h5>
+        <ul>
+          <li><b>Shopify Analytics</b> — built in</li>
+          <li><b>Google Analytics 4</b> — site behavior</li>
+          <li><b>Triple Whale/Northbeam</b> — ad attribution</li>
+        </ul>
+      </div>
+      <div class="glass tool-card animate delay-3">
+        <h5>Fulfillment</h5>
+        <ul>
+          <li><b>ShipBob/ShipStation</b> — 3PL &amp; labels</li>
+          <li><b>Self-fulfillment</b> — early stage</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FINAL CTA ================= -->
+<section class="section-dark">
+  <div class="wrap">
+    <div class="glass final-cta animate" style="background:var(--dark-surface);">
+      <h2>You now have the whole map.</h2>
+      <p>Pick one niche, validate it this week, and move through the stages in order. Momentum beats perfection — the first version of your store just needs to be good enough to test.</p>
+      <div class="final-actions">
+        <a href="#niche" class="btn btn-dark">Back to Stage 1</a>
+        <a href="#toolkit" class="btn btn-ghost" style="color:var(--ink-light); background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.15);">Review the toolkit</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex; flex-direction:column; align-items:center; gap:16px;">
+    <img src="images/logo.png" alt="Commercify" style="height:48px; mix-blend-mode:multiply; opacity:0.9;">
+    <div>Commercify — a complete ecommerce launch guide. Built for people starting their first store.</div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+  });
+</script>
+
+</body>
+</html>

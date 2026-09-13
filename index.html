@@ -3,359 +3,378 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Commercify — Download</title>
+<title>Commercify — E-Commerce Launch & Management App</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    background: #FAF8F5;
-    color: #161D14;
-    min-height: 100vh;
-    overflow-x: hidden;
-    position: relative;
-  }
-
-  /* ═══ ANIMATED GLOW ORBS ═══ */
-  .bg-glow {
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(120px);
-    opacity: 0.1;
-    animation: drift 10s ease-in-out infinite;
-    pointer-events: none;
-    z-index: 0;
-  }
-  .glow-1 { width: 500px; height: 500px; background: radial-gradient(circle, #95BF47, transparent 70%); top: -10%; left: -5%; }
-  .glow-2 { width: 400px; height: 400px; background: radial-gradient(circle, #7a9e38, transparent 70%); bottom: -5%; right: -5%; animation-delay: -3s; }
-  .glow-3 { width: 350px; height: 350px; background: radial-gradient(circle, #a8d450, transparent 70%); top: 40%; right: 20%; animation-delay: -5s; opacity: 0.15; }
-  .glow-4 { width: 300px; height: 300px; background: radial-gradient(circle, #6b8c2e, transparent 70%); bottom: 30%; left: 15%; animation-delay: -7s; opacity: 0.12; }
-
-  @keyframes drift {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    25% { transform: translate(40px, -30px) scale(1.1); }
-    50% { transform: translate(-30px, 40px) scale(0.95); }
-    75% { transform: translate(20px, 20px) scale(1.05); }
-  }
-
-  /* ═══ FALLING MONEY ═══ */
-  .money-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
-    overflow: hidden;
-  }
-  .bill {
-    position: absolute;
-    top: -80px;
-    font-size: 2rem;
-    animation: fall linear infinite;
-    opacity: 0.25;
-    filter: grayscale(0.2);
-  }
-  @keyframes fall {
-    0% { transform: translateY(-80px) rotate(0deg); opacity: 0; }
-    10% { opacity: 0.25; }
-    90% { opacity: 0.25; }
-    100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
-  }
-
-  /* ═══ LAYOUT ═══ */
-  .container {
-    position: relative;
-    z-index: 1;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 80px 24px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    min-height: 100vh;
-    justify-content: center;
-    gap: 36px;
-  }
-
-  /* ═══ LOGO ═══ */
-  .logo {
-    width: 130px;
-    height: auto;
-    filter: drop-shadow(0 0 50px rgba(149, 191, 71, 0.4));
-    animation: logoIn 1s ease-out;
-  }
-  @keyframes logoIn {
-    from { opacity: 0; transform: translateY(-20px) scale(0.9); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-  }
-
-  /* ═══ TEXT ═══ */
-  h1 {
-    font-size: 3.4rem;
-    font-weight: 800;
-    letter-spacing: -1.5px;
-    line-height: 1.1;
-    animation: fadeUp 0.8s ease-out 0.2s both;
-  }
-  h1 span {
-    background: linear-gradient(135deg, #3d7a2a, #95BF47, #2d5a1a);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .subtitle {
-    font-size: 1.1rem;
-    color: rgba(22,29,20,0.5);
-    max-width: 540px;
-    line-height: 1.65;
-    font-weight: 400;
-    animation: fadeUp 0.8s ease-out 0.4s both;
-  }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ═══ DOWNLOAD CARDS ═══ */
-  .downloads {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    justify-content: center;
-    animation: fadeUp 0.8s ease-out 0.6s both;
-  }
-  .dl-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 14px;
-    padding: 28px 32px;
-    background: #FFFFFF;
-    border: 1px solid rgba(22,29,20,0.08);
-    border-radius: 16px;
-    text-decoration: none;
-    color: #161D14;
-    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    min-width: 190px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  }
-  .dl-card:hover {
-    background: #FFFFFF;
-    border-color: rgba(149, 191, 71, 0.5);
-    transform: translateY(-5px);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.08), 0 0 0 1px rgba(149, 191, 71, 0.2);
-  }
-  .dl-icon { font-size: 2.2rem; line-height: 1; }
-  .dl-platform { font-size: 1.05rem; font-weight: 700; letter-spacing: 0.3px; }
-  .dl-meta { font-size: 0.75rem; color: rgba(22,29,20,0.35); font-weight: 400; }
-  .dl-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 10px 24px;
-    background: #95BF47;
-    color: #0a0f08;
-    font-weight: 700;
-    font-size: 0.85rem;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-  }
-  .dl-card:hover .dl-btn {
-    background: #a8d450;
-    box-shadow: 0 4px 16px rgba(149, 191, 71, 0.4);
-  }
-  .dl-arrow {
-    width: 14px;
-    height: 14px;
-  }
-
-  /* ═══ FEATURES ═══ */
-  .features {
-    display: flex;
-    gap: 32px;
-    flex-wrap: wrap;
-    justify-content: center;
-    animation: fadeUp 0.8s ease-out 0.8s both;
-    max-width: 600px;
-  }
-  .feature {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.85rem;
-    color: rgba(22,29,20,0.45);
-    font-weight: 500;
-  }
-  .feature-icon {
-    font-size: 1rem;
-  }
-
-  /* ═══ VERSION BADGE ═══ */
-  .version-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 20px;
-    background: rgba(149, 191, 71, 0.1);
-    border: 1px solid rgba(149, 191, 71, 0.2);
-    border-radius: 100px;
-    font-size: 0.8rem;
-    color: #95BF47;
-    font-weight: 600;
-    animation: fadeUp 0.8s ease-out 1s both;
-  }
-  .dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: #95BF47;
-    animation: pulse 2s ease-in-out infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-  }
-
-  /* ═══ FOOTER ═══ */
-  .footer {
-    font-size: 0.78rem;
-    color: rgba(22,29,20,0.2);
-    animation: fadeUp 0.8s ease-out 1.2s both;
-  }
-
-  /* ═══ RESPONSIVE ═══ */
-  @media (max-width: 600px) {
-    h1 { font-size: 2.2rem; }
-    .downloads { flex-direction: column; align-items: center; }
-    .dl-card { width: 100%; max-width: 260px; }
-    .features { gap: 16px; }
-  }
-</style>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<!-- Animated glow orbs -->
-<div class="bg-glow glow-1"></div>
-<div class="bg-glow glow-2"></div>
-<div class="bg-glow glow-3"></div>
-<div class="bg-glow glow-4"></div>
-
-<!-- Falling money bills -->
-<div class="money-container" id="moneyContainer"></div>
-
-<div class="container">
-  <img src="images/wordmark.png" alt="Commercify" class="logo" style="width: 260px; height: auto;">
-
-  <h1 style="display:none;">Download <span>Commercify</span></h1>
-
-  <p class="subtitle">Your all-in-one e-commerce launch companion. Blueprint, profit calculators, niche validation, toolkit directory, and curated video library — all in one sleek desktop app.</p>
-
-  <div class="downloads">
-    <!-- macOS -->
-    <a href="https://github.com/proteadetail-cyber/commercify/releases/latest/download/Commercify-macOS.zip" class="dl-card">
-      <div class="dl-icon">
-        <img src="images/apple.png" alt="macOS" style="width: 36px; height: 36px; object-fit: contain;">
-      </div>
-      <div class="dl-platform">macOS</div>
-      <div class="dl-meta">Desktop App (.zip)</div>
-      <div class="dl-btn">
-        <svg class="dl-arrow" viewBox="0 0 16 16" fill="none"><path d="M8 2v9m0 0l3.5-3.5M8 11L4.5 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 13h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        Download
-      </div>
-    </a>
-
-    <!-- Windows (Web App) -->
-    <a href="https://proteadetail-cyber.github.io/commercify-app/" class="dl-card">
-      <div class="dl-icon">
-        <img src="images/windows.png" alt="Windows" style="width: 36px; height: 36px; object-fit: contain;">
-      </div>
-      <div class="dl-platform">Windows</div>
-      <div class="dl-meta">Launch Web Version</div>
-      <div class="dl-btn">
-        <svg class="dl-arrow" viewBox="0 0 16 16" fill="none"><path d="M5 11l6-6m0 0H5m6 0v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Open App
-      </div>
-    </a>
-
-    <!-- Linux (Web App) -->
-    <a href="https://proteadetail-cyber.github.io/commercify-app/" class="dl-card">
-      <div class="dl-icon">
-        <img src="images/linux.png" alt="Linux" style="width: 36px; height: 36px; object-fit: contain;">
-      </div>
-      <div class="dl-platform">Linux</div>
-      <div class="dl-meta">Launch Web Version</div>
-      <div class="dl-btn">
-        <svg class="dl-arrow" viewBox="0 0 16 16" fill="none"><path d="M5 11l6-6m0 0H5m6 0v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Open App
-      </div>
-    </a>
-
-    <!-- Web App -->
-    <a href="https://proteadetail-cyber.github.io/commercify-app/" class="dl-card">
-      <div class="dl-icon">
-        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
-      </div>
-      <div class="dl-platform">Web App</div>
-      <div class="dl-meta">Use in browser — no install</div>
-      <div class="dl-btn">
-        <svg class="dl-arrow" viewBox="0 0 16 16" fill="none"><path d="M5 11l6-6m0 0H5m6 0v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        Launch
-      </div>
-    </a>
+<!-- LICENSE KEY LOCK SCREEN -->
+<div id="lockScreen" class="lock-screen">
+  <div class="lock-glow lock-glow-1"></div>
+  <div class="lock-glow lock-glow-2"></div>
+  <div class="lock-glow lock-glow-3"></div>
+  <div class="lock-glow lock-glow-4"></div>
+  <div class="lock-content">
+    <img src="images/logo.png" alt="Commercify" class="lock-logo">
+    <p class="lock-subtitle">Enter your license key to unlock</p>
+    <div class="lock-input-wrap">
+      <input type="text" id="licenseKeyInput" class="lock-input" placeholder="XXXX-XXXX-XXXX" autocomplete="off" spellcheck="false">
+    </div>
+    <button id="unlockBtn" class="lock-btn">Unlock</button>
+    <p id="lockError" class="lock-error"></p>
   </div>
-
-  <div class="features">
-    <div class="feature"><span class="feature-icon">📐</span> 6-Stage Blueprint</div>
-    <div class="feature"><span class="feature-icon">💰</span> Profit Calculator</div>
-    <div class="feature"><span class="feature-icon">🎯</span> Niche Validator</div>
-    <div class="feature"><span class="feature-icon">🛠️</span> 30+ Tools Directory</div>
-    <div class="feature"><span class="feature-icon">🎥</span> Video Masterclass</div>
-    <div class="feature"><span class="feature-icon">📋</span> Launch Checklist</div>
-  </div>
-
-  <div class="version-badge">
-    <div class="dot"></div>
-    v1.0.0 — Latest Release
-  </div>
-
-  <p class="footer">© 2026 Commercify. All rights reserved.</p>
 </div>
 
-<script>
-// ═══ FALLING REAL DOLLAR BILLS ═══
-const container = document.getElementById('moneyContainer');
+<!-- APP HEADER & NAVIGATION BAR -->
+<header>
+  <div class="wrap">
+    <div class="navbar">
+      <a href="#" class="brand" onclick="switchView('blueprint')">
+        <img src="images/logo.png" alt="Commercify" class="brand-logo">
+      </a>
 
-function createBill() {
-  const bill = document.createElement('img');
-  bill.className = 'bill';
-  bill.src = 'images/dollar.png';
-  bill.alt = 'Dollar Bill';
-  bill.style.left = Math.random() * 100 + 'vw';
-  
-  const width = 50 + Math.random() * 45;
-  bill.style.width = width + 'px';
-  bill.style.height = 'auto';
-  bill.style.opacity = 0.25 + Math.random() * 0.35;
+      <!-- APP VIEW SWITCHER TABS -->
+      <div class="nav-tabs">
+        <button class="nav-tab active" data-view="blueprint">🚀 Blueprint</button>
+        <button class="nav-tab" data-view="calculator">🧮 Profit Calculator</button>
+        <button class="nav-tab" data-view="scorecard">🎯 Niche Test</button>
+        <button class="nav-tab" data-view="toolkit">🛠️ Toolkit</button>
+        <button class="nav-tab" data-view="videos">🎥 Videos</button>
+        <button class="nav-tab" data-view="checklist">📋 Plans</button>
+      </div>
 
-  const duration = 5 + Math.random() * 7;
-  bill.style.animationDuration = duration + 's';
-  bill.style.animationDelay = Math.random() * 1.5 + 's';
+      <!-- LIVE LAUNCH GAUGE BADGE -->
+      <div class="app-progress-badge">
+        <span>⚡ Launch Readiness:</span>
+        <span id="app-progress-text">0/22 Tasks Done (0%)</span>
+      </div>
+    </div>
+  </div>
+</header>
 
-  container.appendChild(bill);
+<main>
 
-  setTimeout(() => bill.remove(), (duration + 2) * 1000);
-}
+  <!-- VIEW 1: LAUNCH BLUEPRINT (6 STAGES) -->
+  <div class="app-view active" id="view-blueprint">
+    <section class="hero-cover">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="kicker">
+            <span class="kicker-dot"></span> Interactive E-Commerce Launch Blueprint
+          </div>
+          <h1>Build an online store that people actually <span>buy from.</span></h1>
+          <p class="lead">The complete start-to-profit walkthrough: how to pick a validated niche, choose your platform and suppliers, build a store that converts, and optimize your first ad campaign.</p>
 
-// Spawn bills continuously
-setInterval(createBill, 300);
-// Initial burst
-for (let i = 0; i < 20; i++) setTimeout(createBill, i * 150);
-</script>
+          <div style="margin-top:24px; padding:18px 22px; background:var(--pearl-surface); border:1px solid var(--pearl-border); border-radius:16px; box-shadow:var(--shadow-sm);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; font-size:0.88rem; font-weight:700;">
+              <span>Overall Store Launch Progress</span>
+              <span id="progress-text" style="color:var(--accent-dark);">Track your launch checklist</span>
+            </div>
+            <div style="width:100%; height:10px; background:var(--pearl-alt); border-radius:100px; overflow:hidden;">
+              <div id="progress-bar-fill" style="width:0%; height:100%; background:var(--accent); transition:width 0.4s ease;"></div>
+            </div>
+          </div>
 
+          <div style="display:flex; align-items:center; gap:14px; margin-top:28px;">
+            <button class="btn btn-primary" onclick="switchView('calculator')">🧮 Test Profit Math →</button>
+            <button class="btn btn-ghost" onclick="switchView('scorecard')">🎯 Validate Product Idea</button>
+          </div>
+        </div>
+
+        <div class="hero-art">
+          <div class="dashboard-mockup">
+            <div class="dash-header">
+              <img src="images/logo.png" alt="Commercify" style="height:32px; filter:brightness(0) invert(1);">
+              <span class="dash-badge">+142% Sales Growth</span>
+            </div>
+            <div style="font-size:0.85rem; color:var(--ink-light-muted); font-weight:600; text-transform:uppercase;">30-Day Net Sales Target</div>
+            <div class="dash-stat-main">$14,890.00</div>
+            <div class="dash-stat-sub">↑ 342 orders fulfilled this month</div>
+            
+            <div class="dash-chart">
+              <div class="chart-bar" style="height:35%;"></div>
+              <div class="chart-bar" style="height:50%;"></div>
+              <div class="chart-bar" style="height:40%;"></div>
+              <div class="chart-bar" style="height:65%;"></div>
+              <div class="chart-bar" style="height:55%;"></div>
+              <div class="chart-bar active" style="height:90%;"></div>
+              <div class="chart-bar active" style="height:100%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-alt">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">THE 6 LAUNCH STAGES</span>
+          <h2>Click any stage card to explore the full guide</h2>
+          <p>Each stage provides key decisions, supplier vetting criteria, conversion design rules, and ad channel tactics.</p>
+        </div>
+
+        <div class="stages-grid" id="stages-cards-container">
+          <!-- Dynamic Stage Cards rendered by app.js -->
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:60px 0;">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">SKIP THESE PITFALLS</span>
+          <h2>5 common mistakes that quietly sink new stores</h2>
+        </div>
+        <div class="mistake-list" id="mistakes-container">
+          <!-- Dynamic Mistakes rendered by app.js -->
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VIEW 2: INTERACTIVE PROFIT & MARGIN CALCULATOR -->
+  <div class="app-view" id="view-calculator">
+    <section style="padding:60px 0;">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">UNIT ECONOMICS MODELER</span>
+          <h2>Interactive Profit &amp; Margin Calculator</h2>
+          <p>Drag the sliders below to test your pricing, product landed cost, platform fees, and target customer acquisition cost (CAC).</p>
+        </div>
+
+        <div class="calc-card">
+          <div class="calc-grid">
+            <div class="calc-inputs">
+              <div class="range-group">
+                <div class="range-header">
+                  <span>Retail Selling Price ($)</span>
+                  <span class="val" id="val-price">$39.00</span>
+                </div>
+                <input type="range" id="slider-price" class="slider-custom" min="10" max="250" value="39" step="1">
+              </div>
+
+              <div class="range-group">
+                <div class="range-header">
+                  <span>Supplier Landed Cost (Product + Shipping)</span>
+                  <span class="val" id="val-cost">$9.50</span>
+                </div>
+                <input type="range" id="slider-cost" class="slider-custom" min="2" max="100" value="9.50" step="0.50">
+              </div>
+
+              <div class="range-group">
+                <div class="range-header">
+                  <span>Platform &amp; Payment Fee (%)</span>
+                  <span class="val" id="val-fee">4.0%</span>
+                </div>
+                <input type="range" id="slider-fee" class="slider-custom" min="1" max="10" value="4.0" step="0.5">
+              </div>
+
+              <div class="range-group">
+                <div class="range-header">
+                  <span>Target Ad CAC (Cost Per Sale)</span>
+                  <span class="val" id="val-cac">$14.00</span>
+                </div>
+                <input type="range" id="slider-cac" class="slider-custom" min="0" max="80" value="14.00" step="0.50">
+              </div>
+            </div>
+
+            <div class="calc-outputs">
+              <div class="calc-result-main">
+                <div style="font-size:0.85rem; font-weight:700; color:var(--ink-light-muted); text-transform:uppercase;">Net Profit Per Unit</div>
+                <div class="calc-result-val" id="calc-net-profit">$13.94</div>
+              </div>
+
+              <div class="calc-metrics-row">
+                <div class="calc-metric-box">
+                  <strong id="calc-margin">35.7%</strong>
+                  <span>Net Margin %</span>
+                </div>
+                <div class="calc-metric-box">
+                  <strong id="calc-roas">2.79x</strong>
+                  <span>Min Break-Even ROAS</span>
+                </div>
+              </div>
+
+              <div style="margin-top:20px; padding:14px; background:rgba(255,255,255,0.06); border-radius:12px; font-size:0.9rem;">
+                <span style="color:var(--ink-light-muted);">Est. Monthly Profit (at 100 orders/mo):</span>
+                <strong id="calc-monthly-net" style="color:var(--accent); margin-left:6px; font-size:1.1rem;">$1,394.00</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VIEW 3: NICHE VALIDATOR SCORECARD -->
+  <div class="app-view" id="view-scorecard">
+    <section style="padding:60px 0;">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">PRODUCT EVALUATION ENGINE</span>
+          <h2>Niche &amp; Product Readiness Scorecard</h2>
+          <p>Check all criteria that apply to your product idea to calculate your launch score (0–100%).</p>
+        </div>
+
+        <div class="scorecard-grid">
+          <div class="checklist-items">
+            <div class="check-item">
+              <div class="checkbox-custom"></div>
+              <div>
+                <strong style="display:block; font-size:1rem;">Solves a Specific, Painful Problem</strong>
+                <span style="font-size:0.85rem; color:var(--ink-secondary);">Saves time, reduces discomfort, or satisfies a passionate hobby.</span>
+              </div>
+            </div>
+
+            <div class="check-item">
+              <div class="checkbox-custom"></div>
+              <div>
+                <strong style="display:block; font-size:1rem;">Steady or Rising Search Demand</strong>
+                <span style="font-size:0.85rem; color:var(--ink-secondary);">Verified on Google Trends with high Amazon 3-star review activity.</span>
+              </div>
+            </div>
+
+            <div class="check-item">
+              <div class="checkbox-custom"></div>
+              <div>
+                <strong style="display:block; font-size:1rem;">3.5x to 4x Retail Markup Room</strong>
+                <span style="font-size:0.85rem; color:var(--ink-secondary);">Selling price leaves healthy margin after landed cost and ad spend.</span>
+              </div>
+            </div>
+
+            <div class="check-item">
+              <div class="checkbox-custom"></div>
+              <div>
+                <strong style="display:block; font-size:1rem;">Lightweight &amp; Non-Fragile</strong>
+                <span style="font-size:0.85rem; color:var(--ink-secondary);">Under 2 lbs to keep shipping costs low and prevent transit damage.</span>
+              </div>
+            </div>
+
+            <div class="check-item">
+              <div class="checkbox-custom"></div>
+              <div>
+                <strong style="display:block; font-size:1rem;">Clear Differentiating Angle</strong>
+                <span style="font-size:0.85rem; color:var(--ink-secondary);">Not easily bought for cheap at local retail or general marketplaces.</span>
+              </div>
+            </div>
+
+            <div class="check-item">
+              <div class="checkbox-custom"></div>
+              <div>
+                <strong style="display:block; font-size:1rem;">Repeat Purchase or Consumable Upsell</strong>
+                <span style="font-size:0.85rem; color:var(--ink-secondary);">Opportunity to re-sell supplies, refills, or accessories.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="score-display-card">
+            <div class="score-circle" id="score-value">0%</div>
+            <h4 style="font-size:1.3rem; margin-bottom:8px;">Niche Scorecard Result</h4>
+            <p id="score-verdict" style="font-size:0.95rem; font-weight:700; color:var(--ink-secondary);">Click the criteria options to test your product idea.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VIEW 4: TOOLKIT DIRECTORY HUB -->
+  <div class="app-view" id="view-toolkit">
+    <section style="padding:60px 0;">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">THE FULL TOOLKIT</span>
+          <h2>30+ E-Commerce Tools Directory</h2>
+          <p>Search or filter platforms, sourcing providers, marketing tools, support desks, and logistics partners.</p>
+        </div>
+
+        <div class="toolkit-search-wrap">
+          <input type="text" id="toolkit-search" class="search-input" placeholder="🔍 Search tools by name or job (e.g. Shopify, Klaviyo, Alibaba)...">
+          <div class="category-pills">
+            <span class="cat-pill active" data-category="all">All Tools</span>
+            <span class="cat-pill" data-category="Platforms">Platforms</span>
+            <span class="cat-pill" data-category="Sourcing">Sourcing</span>
+            <span class="cat-pill" data-category="Store &amp; Design">Design</span>
+            <span class="cat-pill" data-category="Marketing">Marketing</span>
+            <span class="cat-pill" data-category="Research">Research</span>
+            <span class="cat-pill" data-category="Support &amp; Operations">Support</span>
+          </div>
+        </div>
+
+        <div class="toolkit-grid" id="toolkit-items-container">
+          <!-- Dynamic Tools rendered by app.js -->
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VIEW 5: VIDEO MASTERCLASSES -->
+  <div class="app-view" id="view-videos">
+    <section class="section-dark">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow" style="background:rgba(149, 191, 71, 0.15); color:var(--accent); border-color:var(--accent-border);">VIDEO CURATION</span>
+          <h2>Curated E-Commerce YouTube Masterclasses</h2>
+          <p>10 top-rated channels and 2 hidden gems tagged to each stage of the store launch blueprint.</p>
+        </div>
+
+        <div class="video-grid" id="videos-container">
+          <!-- Dynamic Videos rendered by app.js -->
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VIEW 6: MY LAUNCH PLAN & NOTES -->
+  <div class="app-view" id="view-checklist">
+    <section style="padding:60px 0;">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">MY STORE LAUNCH MANAGER</span>
+          <h2>Launch Checklist &amp; Personal Notes</h2>
+          <p>Check off completed tasks for each stage and record your supplier notes, domain ideas, and ad hooks.</p>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1.2fr 0.8fr; gap:32px;">
+          <div id="my-checklist-container">
+            <!-- Dynamic Task List rendered by app.js -->
+          </div>
+
+          <div>
+            <div class="glass" style="position:sticky; top:100px;">
+              <h3 style="font-size:1.3rem; margin-bottom:12px;">📝 My Personal Launch Notes</h3>
+              <p style="font-size:0.88rem; color:var(--ink-secondary); margin-bottom:16px;">Saved automatically to your local browser storage.</p>
+              <textarea id="user-launch-notes" style="width:100%; height:280px; padding:14px; border:1px solid var(--pearl-border); border-radius:14px; font-family:'Plus Jakarta Sans', sans-serif; font-size:0.95rem; outline:none; resize:none;" placeholder="Write your store name ideas, supplier contact info, domain notes, or ad angle hooks here..."></textarea>
+              <button id="btn-save-notes" class="btn btn-primary" style="width:100%; margin-top:14px;">💾 Save Notes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="section-dark">
+  <div class="wrap" style="display:flex; flex-direction:column; align-items:center; gap:20px;">
+    <img src="images/logo.png" alt="Commercify Logo" style="height:48px; filter:brightness(0) invert(1); opacity:0.95;">
+    <p style="max-width:560px; color:var(--ink-light-muted); font-size:0.92rem; text-align:center;">Commercify E-Commerce Launch &amp; Management Web App. Built for people launching their first online store.</p>
+  </div>
+</footer>
+
+<!-- STAGE DETAIL MODAL -->
+<div class="modal-backdrop" id="stage-modal">
+  <div class="modal-content">
+    <button class="close-modal" onclick="closeModal()">✕</button>
+    <div id="modal-body-content"></div>
+  </div>
+</div>
+
+<!-- SCRIPTS -->
+<script src="commercify-data.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
