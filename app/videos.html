@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commercify — The Best Ecommerce Videos on YouTube</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Brand Accent Colorway */
+    --accent: #95BF47;
+    --accent-dark: #7a9e38;
+    --accent-light: rgba(149, 191, 71, 0.12);
+    --accent-border: rgba(149, 191, 71, 0.35);
+    --accent-glow: rgba(149, 191, 71, 0.25);
+    
+    /* Pearl Theme Color System */
+    --pearl-bg: #FAF8F5;          /* Soft luminous Pearl base */
+    --pearl-surface: #FFFFFF;     /* Pure pearl card surface */
+    --pearl-alt: #F2F0E8;         /* Slightly deeper pearl background */
+    --pearl-card: #FAF9F6;        /* Elevated pearl card */
+    --pearl-border: rgba(26, 33, 24, 0.08); /* Clean subtle border */
+    --pearl-border-hover: rgba(149, 191, 71, 0.4);
+    
+    /* Dark Modern Accent System (for contrast sections) */
+    --dark-bg: #141A12;           /* Deep rich forest charcoal */
+    --dark-surface: #1C2419;      /* Deep pearl dark surface */
+    --dark-border: rgba(149, 191, 71, 0.22);
+    
+    /* Typography / Ink System */
+    --ink-primary: #161D14;       /* Deep obsidian charcoal */
+    --ink-secondary: #455042;     /* Muted sage charcoal */
+    --ink-muted: #707C6E;         /* Soft olive gray */
+    --ink-light: #F4F6F1;         /* Light ink for dark sections */
+    --ink-light-muted: #ADBAA8;
+    
+    /* Elevation & Shadows */
+    --shadow-sm: 0 4px 12px rgba(22, 29, 20, 0.03);
+    --shadow-md: 0 12px 32px -8px rgba(22, 29, 20, 0.06);
+    --shadow-lg: 0 20px 48px -12px rgba(22, 29, 20, 0.1);
+    --shadow-accent: 0 10px 28px -6px rgba(149, 191, 71, 0.35);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  
+  body {
+    margin: 0;
+    font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--ink-primary);
+    background-color: var(--pearl-bg);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    margin: 0;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    font-weight: 800;
+  }
+
+  p { margin: 0; }
+  a { color: inherit; text-decoration: none; }
+  ul { margin: 0; padding: 0; list-style: none; }
+
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+
+  /* ---------- Modern Buttons ---------- */
+  .btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.92rem;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    background-color: var(--accent);
+    color: #12180E;
+    box-shadow: var(--shadow-accent);
+  }
+  .btn-primary:hover {
+    background-color: var(--accent-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 32px -4px rgba(149, 191, 71, 0.45);
+  }
+
+  .btn-ghost {
+    color: var(--ink-primary);
+    background: var(--pearl-surface);
+    border: 1px solid var(--pearl-border);
+    box-shadow: var(--shadow-sm);
+  }
+  .btn-ghost:hover {
+    background: #FFFFFF;
+    border-color: var(--accent-border);
+    transform: translateY(-2px);
+    color: #12180E;
+    box-shadow: var(--shadow-md);
+  }
+
+  /* ---------- Header / Nav ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 16px 0;
+  }
+
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 28px 10px 18px;
+    background: rgba(250, 248, 245, 0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--pearl-border);
+    border-radius: 20px;
+    box-shadow: var(--shadow-md);
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 2px 0;
+    margin-right: 36px;
+  }
+
+  .brand-logo {
+    height: 48px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .brand-logo:hover {
+    transform: scale(1.04);
+  }
+
+  /* ---------- Badges & Kickers ---------- */
+  .kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: var(--ink-primary);
+    background: var(--pearl-surface);
+    border: 1px solid var(--pearl-border);
+    box-shadow: var(--shadow-sm);
+    padding: 8px 18px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+  }
+  .kicker-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+    animation: pulseDot 2s infinite ease-in-out;
+  }
+  @keyframes pulseDot {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.3); opacity: 0.6; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 60px 0 40px; }
+  .hero h1 { font-size: clamp(2.4rem, 4.5vw, 3.6rem); color: var(--ink-primary); letter-spacing: -0.035em; }
+  .hero p.lead { margin-top: 20px; font-size: 1.15rem; line-height: 1.7; color: var(--ink-secondary); max-width: 68ch; }
+
+  .honesty-note {
+    margin-top: 32px;
+    padding: 24px 28px;
+    border-radius: 16px;
+    background: var(--pearl-surface);
+    border: 1px solid var(--pearl-border);
+    box-shadow: var(--shadow-sm);
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: var(--ink-secondary);
+  }
+
+  /* ---------- Sections ---------- */
+  section { position: relative; padding: 70px 0; }
+  .section-alt { background-color: var(--pearl-alt); }
+  .section-dark { background-color: var(--dark-bg); color: var(--ink-light); }
+
+  .segment-head {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 36px;
+  }
+  .segment-badge {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: var(--accent);
+    color: #12180E;
+    font-weight: 800;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-accent);
+    flex-shrink: 0;
+  }
+  .segment-head h2 { font-size: 1.6rem; color: var(--ink-primary); }
+  .section-dark .segment-head h2 { color: #FFFFFF; }
+  .segment-head p { font-size: 0.96rem; color: var(--ink-secondary); margin-top: 4px; }
+  .section-dark .segment-head p { color: var(--ink-light-muted); }
+
+  /* ---------- Cards ---------- */
+  .video-grid, .gem-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .card, .video-card, .gem-card {
+    background: var(--pearl-surface);
+    border: 1px solid var(--pearl-border);
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .card:hover, .video-card:hover, .gem-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--pearl-border-hover);
+    box-shadow: var(--shadow-md), 0 0 20px rgba(149, 191, 71, 0.12);
+  }
+
+  .section-dark .card, .section-dark .video-card {
+    background: var(--dark-surface);
+    border-color: var(--dark-border);
+    color: var(--ink-light);
+  }
+  .section-dark .card:hover, .section-dark .video-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.4), 0 0 24px rgba(149, 191, 71, 0.15);
+  }
+
+  .rank {
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: #425819;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .video-card h3, .gem-card h3 { font-size: 1.35rem; color: var(--ink-primary); margin-bottom: 6px; }
+  .section-dark .video-card h3 { color: #FFFFFF; }
+  
+  .channel {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--ink-muted);
+    margin-bottom: 16px;
+    display: block;
+  }
+  .section-dark .channel { color: var(--ink-light-muted); }
+
+  .why {
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: var(--ink-secondary);
+    margin-bottom: 24px;
+  }
+  .section-dark .why { color: var(--ink-light-muted); }
+
+  .watch { align-self: flex-start; }
+
+  .gem-tag {
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: #425819;
+    background: var(--accent-light);
+    border: 1px solid var(--accent-border);
+    padding: 4px 12px;
+    border-radius: 100px;
+    display: inline-block;
+    margin-bottom: 14px;
+    width: fit-content;
+  }
+
+  footer {
+    padding: 48px 0;
+    text-align: center;
+    color: var(--ink-muted);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--pearl-border);
+  }
+
+  /* ---------- Scroll Animations ---------- */
+  .animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .animate.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .delay-1 { transition-delay: 0.1s; }
+  .delay-2 { transition-delay: 0.2s; }
+
+  @media (max-width: 800px) {
+    .video-grid, .gem-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .wrap { padding: 0 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="navbar">
+      <a href="index.html" class="brand"><img src="images/logo.png" alt="Commercify" class="brand-logo"></a>
+      <a href="ecommerce-course-guide.html" class="btn btn-primary">← Back to the guide</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="kicker animate"><span class="kicker-dot"></span> A curated watch list</div>
+    <h1 class="animate delay-1">The ecommerce videos worth your time</h1>
+    <p class="lead animate delay-2">Ten of the biggest, most-watched channels teaching ecommerce and dropshipping right now, plus two small channels almost nobody talks about that punch far above their subscriber count. Each one is tagged to the stage of the guide it helps with most.</p>
+    <div class="honesty-note animate delay-2">View counts on YouTube shift by the day, so instead of chasing an exact leaderboard, this list is built around which channels have the largest, most consistently-cited reach in ecommerce education right now — and, for the two hidden gems, channels that reviewers specifically flag as underrated relative to their size. Worth skimming a few recent uploads on each before you commit an hour.</div>
+  </div>
+</section>
+
+<!-- NICHE -->
+<section class="section-alt">
+  <div class="wrap">
+    <div class="segment-head animate">
+      <div class="segment-badge">1</div>
+      <div><h2>Helps most with: Niche &amp; product research</h2><p>Finding demand before you build anything</p></div>
+    </div>
+    <div class="video-grid">
+      <div class="video-card animate">
+        <div>
+          <span class="rank">TOP 10 — #1</span>
+          <h3>Biaheza</h3>
+          <span class="channel">youtube.com/@biaheza · 125M+ channel views</span>
+          <p class="why">His product-research and "why this store failed" style videos are some of the most watched breakdowns of what separates a validated niche from a guess.</p>
+        </div>
+        <a class="btn btn-ghost watch" href="https://www.youtube.com/channel/UCs5wAPodliO0oVxiTD8ruvg" target="_blank" rel="noopener">Watch the channel →</a>
+      </div>
+      <div class="video-card animate delay-1">
+        <div>
+          <span class="rank">TOP 10 — #2</span>
+          <h3>Wholesale Ted</h3>
+          <span class="channel">youtube.com/@WholesaleTed · product and niche research</span>
+          <p class="why">Consistently ranked by dropshipping roundups as the go-to channel for sourcing and finding winning products with actual data behind the picks, not just gut feel.</p>
+        </div>
+        <a class="btn btn-ghost watch" href="https://www.youtube.com/@WholesaleTed" target="_blank" rel="noopener">Watch the channel →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORM -->
+<section>
+  <div class="wrap">
+    <div class="segment-head animate">
+      <div class="segment-badge">2</div>
+      <div><h2>Helps most with: Choosing &amp; setting up your platform</h2><p>Shopify, and everything the admin panel can do</p></div>
+    </div>
+    <div class="video-grid">
+      <div class="video-card animate">
+        <div>
+          <span class="rank">TOP 10 — #3</span>
+          <h3>Kevin David</h3>
+          <span class="channel">1.46M subscribers · Shopify and Amazon store setup</span>
+          <p class="why">His step-by-step store setup walkthroughs have introduced more total beginners to the platform mechanics than almost any other channel in this space.</p>
+        </div>
+        <a class="btn btn-ghost watch" href="https://www.youtube.com/channel/UC_MTE8H-i_spop-Gc9tOCDQ" target="_blank" rel="noopener">Watch the channel →</a>
+      </div>
+      <div class="video-card animate delay-1">
+        <div>
+          <span class="rank">TOP 10 — #4</span>
+          <h3>Learn With Shopify</h3>
+          <span class="channel">youtube.com/@learnwithshopify · Official education channel</span>
+          <p class="why">Because Shopify makes it themselves, this is the one channel guaranteed to reflect the current admin interface rather than a two-year-old layout that's since changed.</p>
+        </div>
+        <a class="btn btn-ghost watch" href="https://www.youtube.com/@learnwithshopify" target="_blank" rel="noopener">Watch the channel →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOURCING -->
+<section class="section-alt">
+  <div class="wrap">
+    <div class="segment-head animate">
+      <div class="segment-badge">3</div>
+      <div><h2>Helps most with: Sourcing products</h2><p>Dropshipping, print-on-demand, and private label</p></div>
+    </div>
+    <div class="video-grid">
+      <div class="video-card animate">
+        <div>
+          <span class="rank">TOP 10 — #5</span>
+          <h3>Wholesale Ted</h3>
+          <span class="channel">youtube.com/@WholesaleTed · supplier vetting</span>
+          <p class="why">Also earns its spot here — the channel is as much about finding legitimate suppliers as it is about picking products, which most niche-focused channels skip.</p>
+        </div>
+        <a class="btn btn-ghost watch" href="https://www.youtube.com/@WholesaleTed" target="_blank" rel="noopener">Watch the channel →</a>
+      </div>
+      <div class="video-card animate delay-1">
+        <div>
+          <span class="rank">TOP 10 — #6</span>
+          <h3>My Wife Quit Her Job (Steve Chou)</h3>
+          <span class="channel">youtube.com/@mywifequitherjob · long-running education</span>
+          <p class="why">Steve Chou built a real private-label brand before teaching it, and his channel is one of the few that treats wholesale and private-label sourcing as seriously as dropshipping.</p>
+        </div>
+        <a class="btn btn-ghost watch" href="https://www.youtube.com/@mywifequitherjob" target="_blank" rel="noopener">Watch the channel →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUILD -->
+<section>
+  <div class="wrap">
+    <div class="segment-head animate">
+      <div class="segment-badge">4</div>
+      <div><h2>Helps most with: Building the store</h2><p>Themes, pages, apps, and conversion basics</p></div>
+    </div>
+    <div class="video-grid">
+      <div class="video-card animate">
+        <div>
+          <span class="rank">TOP 10 — #7</span>
+          <h3>Ac Hampton</h3>
+          <span class="channel">305K+ subscribers · active 6-7 figure store owner</span>
+          <p class="why">His build-out videos come from someone actively running stores at scale, so the store-design advice is tested against real conversion data, not theory.</p>
+        </div>
+        <a class="btn btn-ghost watch" href="https://www.youtube.com/@AcHampton" target="_blank" rel="noopener">Watch the channel →</a>
+      </div>
+      <div class="video-card animate delay-1">
+        <div>
+          <span class="rank">TOP 10 — #8</span>
+          <h3>Learn With Shopify</h3>
+          <span class="channel">youtube.com/@learnwithshopify · conversion tutorials</span>
+          <p class="why">Also worth a second visit here for their page-by-page store build tutorials — home page, product page, and checkout — using the actual current theme editor.</p>
+        </div>
+        <a class="btn btn-ghost watch" href="https://www.youtube.com/@learnwithshopify" target="_blank" rel="noopener">Watch the channel →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ADS -->
+<section class="section-dark">
+  <div class="wrap">
+    <div class="segment-head animate">
+      <div class="segment-badge">5</div>
+      <div><h2>Helps most with: Advertising</h2><p>Meta, TikTok, and getting your first paying customers</p></div>
+    </div>
+    <div class="video-grid">
+      <div class="video-card animate">
+        <div>
+          <span class="rank" style="color:var(--accent);">TOP 10 — #9</span>
+          <h3>Sebastian Ghiorghiu</h3>
+          <span class="channel">youtube.com/@sebb · paid-ads strategy</span>
+          <p class="why">Focuses heavily on the ad side — creative angles, budget structuring, and scaling spend once a product proves itself — more than any other channel on this list.</p>
+        </div>
+        <a class="btn btn-primary watch" href="https://www.youtube.com/@sebb" target="_blank" rel="noopener">Watch the channel →</a>
+      </div>
+      <div class="video-card animate delay-1">
+        <div>
+          <span class="rank" style="color:var(--accent);">TOP 10 — #10</span>
+          <h3>Verum Ecom</h3>
+          <span class="channel">127K subscribers · data-driven strategy</span>
+          <p class="why">Where a lot of ad-focused channels lead with income screenshots, this one breaks down real return-on-ad-spend numbers and why campaigns actually fail.</p>
+        </div>
+        <a class="btn btn-primary watch" href="https://www.youtube.com/channel/UCHMxkQsC2jpuhxhSvfzJ9CQ" target="_blank" rel="noopener">Watch the channel →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCALE -->
+<section>
+  <div class="wrap">
+    <div class="segment-head animate">
+      <div class="segment-badge">6</div>
+      <div><h2>Helps most with: Operating &amp; scaling</h2><p>Once orders are steady and it's time to grow</p></div>
+    </div>
+    <div class="video-grid">
+      <div class="video-card animate">
+        <div>
+          <span class="rank">Also essential</span>
+          <h3>Davie Fogarty</h3>
+          <span class="channel">youtube.com/@DavieFogarty · Founder of The Oodie (A$600M+ Sales)</span>
+          <p class="why">Almost nobody teaching ecommerce has actually scaled a brand to this size — his channel shows what running the business looks like after the first sale, not just how to get it.</p>
+        </div>
+        <a class="btn btn-ghost watch" href="https://www.youtube.com/@DavieFogarty" target="_blank" rel="noopener">Watch the channel →</a>
+      </div>
+      <div class="video-card animate delay-1">
+        <div>
+          <span class="rank">Also essential</span>
+          <h3>Arie Scherson</h3>
+          <span class="channel">121K subscribers · ecommerce case studies</span>
+          <p class="why">Rather than generic advice, the channel walks through real store numbers and decisions, which is exactly what "what do I do once sales are steady" actually needs.</p>
+        </div>
+        <a class="btn btn-ghost watch" href="https://www.youtube.com/@ArieS1" target="_blank" rel="noopener">Watch the channel →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UNDERGROUND -->
+<section class="section-alt">
+  <div class="wrap">
+    <div class="segment-head animate">
+      <span class="segment-badge">★</span>
+      <div><h2>The 2 hidden gems</h2><p>Tiny audiences, disproportionately good advice</p></div>
+    </div>
+    <div class="gem-grid">
+      <div class="gem-card animate">
+        <div>
+          <span class="gem-tag">🔍 Hidden gem — Scale &amp; brand-building</span>
+          <h3>InvolvingChris</h3>
+          <span class="channel">Small channel posting twice a month</span>
+          <p class="why">His video "How I Built a $10,000,000 Business at Age 25" is a genuinely detailed walkthrough of the unglamorous parts of scaling a real ecommerce brand.</p>
+        </div>
+        <a class="btn btn-primary watch" href="https://www.youtube.com/watch?v=EvxMyqVcr1E" target="_blank" rel="noopener">Watch the video →</a>
+      </div>
+      <div class="gem-card animate delay-1">
+        <div>
+          <span class="gem-tag">🔍 Hidden gem — Fulfillment &amp; operations</span>
+          <h3>EcommOps</h3>
+          <span class="channel">Roughly 6-7K subscribers</span>
+          <p class="why">Nobody else on this list goes deep on fulfillment, warehousing, and order-operations the way this channel does. Covered by someone who clearly does it for a living.</p>
+        </div>
+        <a class="btn btn-primary watch" href="https://www.youtube.com/results?search_query=EcommOps" target="_blank" rel="noopener">Search the channel →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex; flex-direction:column; align-items:center; gap:16px;">
+    <img src="images/logo.png" alt="Commercify" style="height:48px; mix-blend-mode:multiply; opacity:0.9;">
+    <div>Commercify — curated for people building their first store. Subscriber and view figures shift constantly; treat this as a starting shortlist, not a live leaderboard.</div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+  });
+</script>
+
+</body>
+</html>
